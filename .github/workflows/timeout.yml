@@ -4,16 +4,15 @@ on: push
 jobs:
   timeout:
     runs-on: ubuntu-latest
-    timeout-minutes: 2 # 2분되면 종료
+    timeout-minutes: 2 # 2분 후에 종료
     steps:
-    - name: loop
-      run: |
-        count=0
-        while true; do
-          ech "seconds: $count"
-          count=$((count+1))
-          sleep 1
-        done
-    - name: echo
-      run: echo hello      
-          
+      - name: loop
+        run: |
+          count=0
+          while true; do
+            echo "seconds: $count"
+            count=$((count+1))
+            sleep 1
+          done
+      - name: echo
+        run: echo hello
