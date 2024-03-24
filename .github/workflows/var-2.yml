@@ -1,14 +1,9 @@
 name: var-2
 on: push
 
-
-name: var-1
-on: push
-
 jobs:
   get-var:
     runs-on: ubuntu-latest
     steps:
       - name: get var
-        run: echo ${{ vars.level }}  # 외부에 설정해 놓은 환경변수 사용
-
+        run: echo ${{ env.level }}  # 환경 변수를 사용하려면 env 키워드를 사용해야 합니다.
