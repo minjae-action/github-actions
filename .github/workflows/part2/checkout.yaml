@@ -2,16 +2,16 @@ name: checkout
 on: workflow_dispatch
 
 jobs:
-  no-checout:
-    runs-on: unbuntu-latest
+  no-checkout:
+    runs-on: ubuntu-latest
     steps:
     - name: check file list
       run: cat README.md
       
-  checout:
-    runs-on: unbuntu-latest
+  checkout:
+    runs-on: ubuntu-latest
     steps:
     - name: use checkout action
       uses: actions/checkout@v4
     - name: check file list
-      run: cat README.md     
+      run: cat README.md
