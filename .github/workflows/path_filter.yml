@@ -3,7 +3,7 @@ on:
   push:
     paths:
     - '.github/workflows/part1/*'
-    - '.github/workflows/part1/*'  #제외 한다는뜻
+    - '!.github/workflows/part1/push.yml'  #제외 한다는뜻
 jobs:
   path-filter:
     runs-on: ubuntu-latest
