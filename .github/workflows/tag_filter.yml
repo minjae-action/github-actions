@@ -2,11 +2,11 @@ name: tag-filter
 on:
   push:
     tags:
-    - 'v[0-9]+. [0-9]+. [0-9]+' # v1.0.0 or v2.2.2 이런 형태만 가능, 
+      - 'v[0-9]+\.[0-9]+\.[0-9]+' # v1.0.0 또는 v2.2.2 형식만 허용됩니다.
 
 jobs:
   tag-filter:
     runs-on: ubuntu-latest
     steps:
-    - name: echo
-      run: echo hello    
+      - name: echo
+        run: echo hello
