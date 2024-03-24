@@ -1,10 +1,12 @@
 name: output
 on: push
 
-
+# 다른 job 또는 step에서 값 사용
 jobs:
   create-output:
     runs-on: ubuntu-latest
+    outputs:
+      test: ${{ steps.check-output.outputs.test }}  # 맨밑줄은 이값을 호출하고잇음
     steps:
     - name: echo output
       id: check-output  # id 값으로 구분한다 , key값은 같아도 상관 없음, 하나의 job에 중복 되지 않아야함
@@ -13,5 +15,13 @@ jobs:
     - name: check output
       run: | # steps.id값.outputs.key값
         echo ${{ steps.check-output.outputs.test }}    
+
+  get-outputs:
+    needs: [create-output]
+    runs-on: ubuntu-latest
+    steps:
+    - name: get output
+      run: echo ${{ needs.create-output.outputs.test }}
+
 
   
