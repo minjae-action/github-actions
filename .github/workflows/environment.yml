@@ -9,3 +9,13 @@ jobs:
         run: |
           echo ${{ vars.level }} 
           echo ${{ secrets.abc }} 
+
+# 깃헙에서 dev 설정 만든뒤 그 공간 환경변수 사용          
+  get-env-dev:
+    runs-on: ubuntu-latest
+    environment: dev
+    steps:
+      - name: check env and secret
+        run: |
+          echo ${{ vars.level }} 
+          echo ${{ secrets.abc }}         
