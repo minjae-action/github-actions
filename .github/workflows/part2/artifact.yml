@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: echo
-        run: echo "hello-world" > hello.txt  # hello.txt 안에 hello-world 들어가도록 설정
+        run: echo hello-world > hello.txt  # hello.txt 안에 hello-world 들어가도록 설정
       - name: upload artifact
         uses: actions/upload-artifact@v3
         with:

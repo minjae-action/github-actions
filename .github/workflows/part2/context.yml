@@ -1,3 +1,5 @@
+
+# 워크플로우를 실행하는 환경에 대한 정보
 name: context
 on: workflow_dispatch
 

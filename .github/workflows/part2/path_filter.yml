@@ -1,3 +1,4 @@
+# 해당 path에 변경사항이 있으면 job 실행
 name: path-filter
 on:
   push:

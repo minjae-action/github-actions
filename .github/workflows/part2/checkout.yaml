@@ -1,6 +1,7 @@
 name: checkout
 on: workflow_dispatch
 
+# use 키워드로 step안에 action 실행
 jobs:
   no-checkout:
     runs-on: ubuntu-latest

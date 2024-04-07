@@ -17,6 +17,13 @@ on:
         - qa
         - prod
 
+
+#description: name에 대한 설명
+#required: 필수값 여부
+#default: 기본값
+#type: 타입 
+
+# 위에서 설정한 값들을 밑에 jobs에서 사용 가능
 jobs:
   workflow-dispatch-job:
     runs-on: ubuntu-latest

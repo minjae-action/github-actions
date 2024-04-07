@@ -1,3 +1,5 @@
+
+# push할때 / issue 생성될때 / 수동으로 트리거 할떄 job 실행
 name: multiple-event-worklfow
 on:
   push:

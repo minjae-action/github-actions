@@ -2,6 +2,8 @@ name: output
 on: push
 
 # 다른 job 또는 step에서 값 사용
+# steps.스텝id.outputs.아우풋 키값
+# 다른 job에서 output사용하려면 needs 와 job level output 설정 필요함
 jobs:
   create-output:
     runs-on: ubuntu-latest

@@ -9,6 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: check env
+      # job level에 설정되 환경변수가 없으므로 wokflow level의 환경변수가 출력된다
         run: echo "LEVEL ${{ env.level }}"  
 
   get-env-2:
@@ -34,4 +35,4 @@ jobs:
       - name: create env
         run: echo "level=job" >> $GITHUB_ENV
       - name: check env
-        run: echo "LEVEL ${{ env.level }}"
+        run: echo "LEVEL ${{ env.level }}"  # job이 출력된다
