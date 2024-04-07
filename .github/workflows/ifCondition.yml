@@ -1,0 +1,20 @@
+name: if-1
+on:
+  push:
+  workflow_dispatch:
+
+# job 1은 push 될때 발생되는 이벤트 job2는 push가 안될때 발생되는 이벤트
+jobs:
+  job1:
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push'
+    steps:
+      - name: get event name
+        run: echo ${{ github.event_name }}
+
+  job2:
+    runs-on: ubuntu-latest
+    if: github.event_name != 'push'
+    steps:
+      - name: get event name
+        run: echo ${{ github.event_name }}
