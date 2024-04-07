@@ -1,0 +1,17 @@
+name: matrix
+on: push
+
+# Windows-latest 12 / Windows-latest 14 / Ubuntu-latest 12 / Ubuntu-latest 14 job이 실행된다
+
+jobs:
+  get-matrix:
+    strategy:
+      matrix:
+        os: [windows-latest, ubuntu-latest]
+        version: [12,14]
+    runs-on: ${{ matrix.os }}
+    steps:
+    - name: check matrix
+      run: |
+        echo ${{ matrix.os }}  
+        ehco ${{ matrix.version }}    
