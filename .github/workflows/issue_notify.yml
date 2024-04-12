@@ -1,0 +1,32 @@
+name: issue-notify
+
+on:
+  issues:
+    types: [opened]
+
+# checkout 을 통해 깃헙레포에서 가져온 keyword list 를 keywords에 대입
+# 반복문을 실행하면서 이슈이름이 키워드와 유사하면 output 구성
+jobs:
+  get-keyword:
+    runs-on: ubuntu-latest
+    outputs:
+      level: ${{ steps.get-keyword.outputs.level }}
+    steps:
+      - name: checkout
+        uses: actions/checkout@v4
+
+      - name: get keyword
+        id: get-keyword
+        run: |
+          echo "level=Undefined" >> $GITHUB_ENV
+
+          keywords=$(cat keyword-list.txt)
+          for keyword in $keywords; do
+            if [[ "${{ github.event.issue.title }}" =~ "$keyword" ]]; then
+              echo "level=$keyword" >> $GITHUB_ENV
+            fi
+          done
+
+      - name: get output
+        run: |
+          echo ${{ steps.get-keyword.outputs.level }}
