@@ -36,6 +36,7 @@ jobs:
     if: needs.get-keyword.outputs.level != 'Undefined'
     runs-on: ubuntu-latest
     #environment: ${{ needs.get-keyword.outputs.level }}
+    # strategy 부분은 githubaction 에서 무슨 환경인지 알려주는 용도임
     strategy:
       matrix:
         environment: ["${{ needs.get-keyword.outputs.level}}"]
