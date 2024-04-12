@@ -35,12 +35,12 @@ jobs:
     needs: [get-keyword]
     if: needs.get-keyword.outputs.level != 'Undefined'
     runs-on: ubuntu-latest
-    environment: ${{ needs.get-keyword.outputs.level}}
+    environment: ${{ needs.get-keyword.outputs.level }}
     steps:
-    - name: slack
-      uses: slackapi/slack-github-action@v.1.24.0
-      with:
-        payload: |
+      - name: slack
+        uses: slackapi/slack-github-action@v.1.24.0
+        with:
+          payload: |
             {
               "attachments": [
                 {
