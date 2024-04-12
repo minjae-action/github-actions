@@ -38,7 +38,7 @@ jobs:
     environment: ${{ needs.get-keyword.outputs.level }}
     steps:
       - name: slack
-        uses: slackapi/slack-github-action@v1.24.0
+        uses: slackapi/slack-github-action@v1  
         with:
           payload: |
             {
@@ -50,7 +50,7 @@ jobs:
                     {
                       "title": "Level :  ${{ needs.get-keyword.outputs.level }}",
                       "short": true,
-                      "value": "issue url : ${{ github.event.issue.url }}"
+                      "value": "issue url : ${{ github.event.issue.html.url }}"
                     }
                   ]
                 }
