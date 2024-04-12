@@ -50,7 +50,7 @@ jobs:
                     {
                       "title": "Level :  ${{ needs.get-keyword.outputs.level }}",
                       "short": true,
-                      "value": "issue url : ${{ github.event.issue.html.url }}"
+                      "value": "issue url : ${{ github.event.issue.url }}"
                     }
                   ]
                 }
