@@ -4,6 +4,8 @@ on:
   issues:
     types: [opened]
 
+# checkout 을 통해 깃헙레포에서 가져온 keyword list 를 keywords에 대입
+# 반복문을 실행하면서 이슈이름이 키워드와 유사하면 output 구성
 jobs:
   get-keyword:
     runs-on: ubuntu-latest
@@ -16,12 +18,12 @@ jobs:
       - name: get keyword
         id: get-keyword
         run: |
-          echo "level=Undefined" >> $GITHUB_ENV
+          echo level=Undefined >> $GITHUB_OUTPUT
 
           keywords=$(cat keyword-list.txt)
           for keyword in $keywords; do
             if [[ "${{ github.event.issue.title }}" =~ "$keyword" ]]; then
-              echo "level=$keyword" >> $GITHUB_ENV
+              echo level=$keyword >> $GITHUB_OUTPUT
             fi
           done
 
@@ -33,22 +35,22 @@ jobs:
     needs: [get-keyword]
     if: needs.get-keyword.outputs.level != 'Undefined'
     runs-on: ubuntu-latest
-    environment: ${{ needs.get-keyword.outputs.level }}
+    environment: ${{ needs.get-keyword.outputs.level}}
     steps:
-      - name: slack
-        uses: slackapi/slack-github-action@v1.24.0
-        with:
-          payload: |
+    - name: slack
+      uses: slackapi/slack-github-action@v.1.24.0
+      with:
+        payload: |
             {
               "attachments": [
                 {
-                  "pretext": "issue alert message ",
+                  "pretext": "issue alert message",
                   "color": "28a745",
                   "fields": [
                     {
-                      "title": "Level: ${{ needs.get-keyword.outputs.level }}",
+                      "title": "Level :  ${{ needs.get-keyword.outputs.level }}",
                       "short": true,
-                      "value": "issue url: ${{ github.event.issue.html.url }}"
+                      "value": "issue url : ${{ github.event.issue.html.url }}"
                     }
                   ]
                 }
