@@ -1,11 +1,11 @@
 # trigger 구성
 name: cicd-1
 on:
-  pill_request:
+  pull_request:
     types: [opened, synchronize, closed]
     branches: [dev]
     paths:
-    - 'my-app/**'
+      - 'my-app/**'
 
 # job
 jobs:
@@ -13,20 +13,19 @@ jobs:
     if: github.event.action == 'opened' || github.event.action == 'synchronize'
     runs-on: ubuntu-latest
     steps:
-    - name: checkoput
-      uses: actions/checkout@v4
+      - name: checkout
+        uses: actions/checkout@v4
 
-   
-   image-build:
+  image-build:
     if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest
     steps:
-    - name: checkout
-      uses: actions/checkout@v4
+      - name: checkout
+        uses: actions/checkout@v4
 
   deploy:
     runs-on: ubuntu-latest
     needs: [image-build]
     steps:
-    - name: checkout
-      uses: actions/checkout@v4
+      - name: checkout
+        uses: actions/checkout@v4
