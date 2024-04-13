@@ -31,6 +31,7 @@ jobs:
         run: |
           echo ${{ steps.get-keyword.outputs.level }}
 
+# environment 를 설정 했으니 맨밑 secrets.SLACK_WEBHOOK_URL은 그 환경에 따라 값이 달라짐
   slack:
     needs: [get-keyword]
     if: needs.get-keyword.outputs.level != 'Undefined'
